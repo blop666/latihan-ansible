@@ -1,14 +1,12 @@
-FROM php:8.2-fpm
+FROM php-8.2:fpm
 
 WORKDIR /var/www/html
 
-RUN apt-get update && apt-get install -y libzip-dev zip unzip git mariadb-client
+RUN apt-get update && apt-get upgrade && apt install -y libzip-dev zip unzip git mariadb-client
 RUN docker-php-ext-install pdo pdo_mysql zip
 
-# Install Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+COPY --from=composer:latest /var/bin/composer /var/bin/composer
 
 COPY . .
 
-
-CMD ["php-fpm"]
+RUN CMD['php-fpm']
