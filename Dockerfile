@@ -9,4 +9,4 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
-RUN CMD['php-fpm']
+CMD ["php-fpm"]
