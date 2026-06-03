@@ -5,7 +5,7 @@ WORKDIR /var/www/html
 RUN apt-get update && apt-get upgrade && apt install -y libzip-dev zip unzip git mariadb-client
 RUN docker-php-ext-install pdo pdo_mysql zip
 
-COPY --from=composer:latest /var/bin/composer /var/bin/composer
+COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 COPY . .
 
