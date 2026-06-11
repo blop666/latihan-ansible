@@ -1,7 +1,6 @@
 services:
   app:
     build: .
-    container_name: perpustakaan_app
     volumes:
       - .:/var/www/html
     restart: unless-stopped
@@ -20,7 +19,6 @@ services:
 
   web:
     image: nginx:alpine
-    container_name: perpustakaan_web
     restart: unless-stopped
     ports:
       - "8000:80"
